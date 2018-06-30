@@ -1,0 +1,8 @@
+{
+  "config": {
+    "soft-packages":true
+  },
+  "require": {
+    "php": ">=7.0.0"
+  }
+}
