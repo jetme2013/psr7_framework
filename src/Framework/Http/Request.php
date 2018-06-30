@@ -14,4 +14,9 @@ class Request
         return $_GET;
 
     }
+
+    public function getParsedBody()
+    {
+        return $_POST ?:null;
+    }
 }
