@@ -13,32 +13,22 @@ use Framework\Http\Request;
 
 class RequestTest extends TestCase
 {
-    public function setUp()
-    {
-        parent::setUp();
-        $_POST =[];
-        $_GET =[];
-    }
-
 
     public function testEmpty(): void
 
     {
-        $_GET = [];
-        $_POST = [];
         $request = new Request();
+
         self::assertEquals([], $request->getQueryParams());
         self::assertNull($request->getParsedBody());
     }
 
     public function testQueryParams()
     {
-        $_GET =$data =[
-           'name'=>'John'
-        ];
-        $request = new Request();
+        $request = (new Request())->withQueryParams($data=
+            ['name'=>'John']);
         self::assertEquals($data, $request->getQueryParams());
         self::assertNull($request->getParsedBody());
     }
-    
+
 }
