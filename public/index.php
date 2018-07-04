@@ -12,9 +12,7 @@ chdir(dirname(__DIR__));
 
 require 'vendor/autoload.php';
 
-$request = (new Request())
-    ->withQueryParams($_GET)
-    ->withParsedBody($_POST);
+$request = \Framework\Http\RequestFactory::fromGlobals($_GET, $_POST);
 
 $name = $request->getQueryParams()['name'] ?? 'Guest';
 

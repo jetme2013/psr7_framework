@@ -12,7 +12,7 @@ class Request
     private $queryParams;
     private $parsedBody;
 
-    public function __construct(array $queryParams, $parsedBody = null)
+    public function __construct(array $queryParams=[], $parsedBody = null)
     {
         $this->queryParams = $queryParams;
         $this->parsedBody = $parsedBody;
@@ -28,7 +28,7 @@ class Request
     public function withQueryParams(array $query) :self
     {
         $new = clone $this;
-        $this->queryParams = $query;
+        $new->queryParams = $query;
         return $new;
     }
 
@@ -50,7 +50,7 @@ class Request
     public function withParsedBody($data)
     {
         $new = clone $this;
-        $this->parsedBody = $data;
+        $new->parsedBody = $data;
         return $new;
     }
 
