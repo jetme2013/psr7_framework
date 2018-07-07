@@ -16,5 +16,12 @@ $request = \Framework\Http\RequestFactory::fromGlobals($_GET, $_POST);
 
 $name = $request->getQueryParams()['name'] ?? 'Guest';
 
-header('X-Developer: Mike');
-echo 'hello, ' . $name . '!';
+$response = (new \Framework\Http\Response('hello, ' . $name . '!'))
+    ->withHeader('X-Developer', 'Mike');
+
+header('HTTP/1.0'.$response->getStatusCode().' '.$response->getStatusPhrase());
+foreach ($response->getHeaders() as $name=>$value){
+         header($name.':'.$value);
+}
+
+echo $response->getBody();
