@@ -17,6 +17,6 @@ class ResponseTest extends TestCase
            $response = new Response($body = 'Body');
            self::assertEquals($body, $response->getBody());
            self::assertEquals(200, $response->getStatusCode());
-           self::assertEquals('OK', $response->getReasonPhrase());
+           self::assertEquals('OK', $response->getStatusPhrase());
     }
 }

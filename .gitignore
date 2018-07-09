@@ -1,5 +1,6 @@
 /vendor/
 # phpstorm project files
 .idea/
+.idea/workspace.xml
 phpunit.xml
 composer.lock

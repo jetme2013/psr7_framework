@@ -14,7 +14,7 @@ class Response
     private $headers = [];
     private $body;
     private $statusCode;
-    private $reasonPhrase = '';
+    private $reasonPhrase;
 
     private static $phrases = [
         200 => 'OK',
@@ -22,7 +22,7 @@ class Response
         404 => 'not found'
     ];
 
-    public function __construct($body, $status = '200')
+    public function __construct($body, $status = 200)
     {
         $this->body = $body;
         $this->statusCode = $status;
@@ -73,8 +73,9 @@ class Response
      */
     public function getStatusPhrase()
     {
-        if (!isset($this->reasonPhrase) && isset(self::$phrases[$this->statusCode]))
+        if (!isset($this->reasonPhrase) && isset(self::$phrases[$this->statusCode])) {
             $this->reasonPhrase = self::$phrases[$this->statusCode];
+        }
         return $this->reasonPhrase;
     }
 
