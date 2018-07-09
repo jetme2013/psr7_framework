@@ -7,7 +7,7 @@
  */
 namespace Framework\Http;
 
-class Request
+class Request implements ServerRequestInterface
 {
     private $queryParams;
     private $parsedBody;
@@ -25,7 +25,7 @@ class Request
      * @param array $query
      * @return Request
      */
-    public function withQueryParams(array $query) :self
+    public function withQueryParams(array $query):self
     {
         $new = clone $this;
         $new->queryParams = $query;
